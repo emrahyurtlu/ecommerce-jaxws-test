@@ -8,18 +8,18 @@ import java.util.stream.Collectors;
 
 public class ProductDao {
 
-    private List<Product> products;
+    private List<Product> products = Arrays.asList(
+            new Product(1, "Çikolata", "safsafd", 1.0, 1),
+            new Product(2, "Pirinç", "safsafd", 6.0, 2),
+            new Product(3, "Salça", "safsafd", 12.0, 2),
+            new Product(4, "Domestos", "safsafd", 7.25, 3)
+    );
 
     public ProductDao() {
-        this.products = Arrays.asList(
-                new Product(1, "Çikolata", "safsafd", 1.0, 1),
-                new Product(2, "Pirinç", "safsafd", 6.0, 2),
-                new Product(3, "Salça", "safsafd", 12.0, 2),
-                new Product(4, "Domestos", "safsafd", 7.25, 3)
-        );
     }
 
     public void insert(Product product) {
+        System.out.println(product);
         this.products.add(product);
     }
 

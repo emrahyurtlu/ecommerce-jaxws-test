@@ -8,7 +8,7 @@ import javax.jws.soap.SOAPBinding;
 import java.util.List;
 
 @WebService()
-@SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE, style = SOAPBinding.Style.RPC)
+@SOAPBinding(style = SOAPBinding.Style.RPC)
 public interface ProductService {
     @WebMethod
     Product getById(Integer productId);

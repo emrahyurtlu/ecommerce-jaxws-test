@@ -1,11 +1,21 @@
 package com.company.dto;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlRootElement(name = "Product")
+@XmlType(propOrder = {"id", "categoryId", "name", "description", "price"})
 public class Product {
     private Integer id;
     private String name;
     private String description;
     private Double price;
     private Integer categoryId;
+
+    public Product() {
+
+    }
 
     public Product(Integer id, String name, String description, Double price, Integer categoryId) {
         this.id = id;
@@ -15,6 +25,16 @@ public class Product {
         this.categoryId = categoryId;
     }
 
+    // Copy Constructor
+    public Product(Product product) {
+        this.id = product.getId();
+        this.name = product.getName();
+        this.description = product.getDescription();
+        this.price = product.getPrice();
+        this.categoryId = product.getCategoryId();
+    }
+
+    @XmlElement(name = "ProductId", required = true)
     public Integer getId() {
         return id;
     }
@@ -23,6 +43,7 @@ public class Product {
         this.id = id;
     }
 
+    @XmlElement(name = "ProductName", required = true)
     public String getName() {
         return name;
     }
@@ -31,6 +52,7 @@ public class Product {
         this.name = name;
     }
 
+    @XmlElement(name = "ProductDescription")
     public String getDescription() {
         return description;
     }
@@ -39,6 +61,7 @@ public class Product {
         this.description = description;
     }
 
+    @XmlElement(name = "ProductPrice", required = true)
     public Double getPrice() {
         return price;
     }
@@ -47,6 +70,7 @@ public class Product {
         this.price = price;
     }
 
+    @XmlElement(name = "ProductCategoryId", required = true)
     public Integer getCategoryId() {
         return categoryId;
     }
