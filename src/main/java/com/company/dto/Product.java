@@ -1,16 +1,25 @@
 package com.company.dto;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
-@XmlRootElement(name = "Product")
+@XmlRootElement(name = "product")
+@XmlAccessorType(value = XmlAccessType.FIELD)
 @XmlType(propOrder = {"id", "categoryId", "name", "description", "price"})
 public class Product {
+
+    @XmlElement(name = "productId", required = true)
     private Integer id;
+
+    @XmlElement(name = "productName", required = true)
     private String name;
+
+    @XmlElement(name = "productDescription", required = true)
     private String description;
+
+    @XmlElement(name = "productPrice", required = true)
     private Double price;
+
+    @XmlElement(name = "productCategoryId", required = true)
     private Integer categoryId;
 
     public Product() {
@@ -25,16 +34,14 @@ public class Product {
         this.categoryId = categoryId;
     }
 
-    // Copy Constructor
     public Product(Product product) {
-        this.id = product.getId();
-        this.name = product.getName();
-        this.description = product.getDescription();
-        this.price = product.getPrice();
-        this.categoryId = product.getCategoryId();
+        this.id = product.id;
+        this.categoryId = product.categoryId;
+        this.name = product.name;
+        this.description = product.description;
+        this.price = product.price;
     }
 
-    @XmlElement(name = "ProductId", required = true)
     public Integer getId() {
         return id;
     }
@@ -43,7 +50,6 @@ public class Product {
         this.id = id;
     }
 
-    @XmlElement(name = "ProductName", required = true)
     public String getName() {
         return name;
     }
@@ -52,7 +58,6 @@ public class Product {
         this.name = name;
     }
 
-    @XmlElement(name = "ProductDescription")
     public String getDescription() {
         return description;
     }
@@ -61,7 +66,6 @@ public class Product {
         this.description = description;
     }
 
-    @XmlElement(name = "ProductPrice", required = true)
     public Double getPrice() {
         return price;
     }
@@ -70,7 +74,6 @@ public class Product {
         this.price = price;
     }
 
-    @XmlElement(name = "ProductCategoryId", required = true)
     public Integer getCategoryId() {
         return categoryId;
     }

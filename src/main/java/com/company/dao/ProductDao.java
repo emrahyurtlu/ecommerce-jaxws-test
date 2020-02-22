@@ -2,39 +2,46 @@ package com.company.dao;
 
 import com.company.dto.Product;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ProductDao {
 
-    private List<Product> products = Arrays.asList(
-            new Product(1, "Çikolata", "safsafd", 1.0, 1),
-            new Product(2, "Pirinç", "safsafd", 6.0, 2),
-            new Product(3, "Salça", "safsafd", 12.0, 2),
-            new Product(4, "Domestos", "safsafd", 7.25, 3)
-    );
+    private List<Product> products;
 
     public ProductDao() {
+        this.products = new ArrayList<>();
+        this.products.add(new Product(1, "Çikolata", "safsafd", 1.0, 1));
+        this.products.add(new Product(2, "Pirinç", "safsafd", 6.0, 2));
+        this.products.add(new Product(3, "Salça", "safsafd", 12.0, 2));
+        this.products.add(new Product(4, "Domestos", "safsafd", 7.25, 3));
     }
 
     public void insert(Product product) {
-        System.out.println(product);
-        this.products.add(product);
+        System.out.println("Will be inserted: " + product);
+        this.products.add(new Product(product));
     }
 
     public void update(Product product) {
-        this.products.forEach(p -> {
-            if (p.getId().equals(product.getId())) {
-                p = product;
+        System.out.println("Will be updated: " + product);
+        for (int i = 0; i < this.products.size(); i++) {
+            Product temp = this.products.get(i);
+            if (temp.getId().equals(product.getId())) {
+                this.products.set(i, product);
             }
-        });
+        }
     }
 
     public void delete(Integer productId) {
-        this.products.forEach(p -> {
-            if (p.getId().equals(productId)) this.products.remove(p);
-        });
+        System.out.println("Will be deleted: " + productId);
+        for (int i = 0; i < this.products.size(); i++) {
+            Product temp = this.products.get(i);
+            if (temp.getId().equals(productId)) {
+                this.products.remove(i);
+                break;
+            }
+        }
     }
 
     public Product getById(Integer id) {
